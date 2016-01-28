@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">almokdad-FuelTrack</string>
+    <string name="action_settings">Settings</string>
+    <string name="new_header">New Entry</string>
+    <string name="head_date">Choose Date</string>
+    <string name="head_station">Fuel Station</string>
+</resources>
