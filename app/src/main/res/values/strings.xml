@@ -1,7 +1,17 @@
 <resources>
     <string name="app_name">almokdad-FuelTrack</string>
     <string name="action_settings">Settings</string>
-    <string name="new_header">New Entry</string>
     <string name="head_date">Choose Date</string>
     <string name="head_station">Fuel Station</string>
+    <string name="head_odometer">Odometer</string>
+    <string name="head_grade">Fuel Grade</string>
+    <string name="head_amount">Fuel Amount</string>
+    <string name="head_unit">Fuel Unit Cost</string>
+    <string name="head_cost">Fuel Cost</string>
+    <string name="button_add_entry">Add Entry</string>
+    <string name="unit_unit">cents/L</string>
+    <string name="unit_odometer">Km</string>
+    <string name="unit_amount">L</string>
+    <string name="title_activity_log_list">log_list</string>
+
 </resources>

@@ -18,7 +18,7 @@
         android:textStyle="bold"
         android:typeface="sans"
         android:layout_marginTop="30dp"
-        android:layout_marginStart="15dp" />
+        android:layout_marginStart="20dp" />
 
     <EditText
         android:layout_width="200dp"
@@ -28,7 +28,10 @@
         android:typeface="sans"
         android:editable="false"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="textEnd" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,7 +43,7 @@
         android:typeface="sans"
         android:layout_below="@+id/head_date"
         android:layout_marginTop="30dp"
-        android:layout_marginStart="15dp"/>
+        android:layout_marginStart="20dp"/>
 
     <EditText
         android:layout_width="200dp"
@@ -50,19 +53,22 @@
         android:layout_below="@+id/entry_date"
         android:layout_marginStart="150dp"
         android:layout_marginTop="10dp"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="textEnd" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Odometer"
+        android:text="@string/head_odometer"
         android:id="@+id/head_odometer"
         android:textStyle="bold"
         android:typeface="sans"
         android:layout_below="@+id/head_station"
         android:layout_marginTop="30dp"
-        android:layout_marginStart="15dp" />
+        android:layout_marginStart="20dp" />
 
     <EditText
         android:layout_width="200dp"
@@ -72,20 +78,23 @@
         android:layout_marginTop="10dp"
         android:layout_below="@+id/entry_station"
         android:layout_marginStart="150dp"
-        android:hint="Km"
-        android:inputType="numberDecimal" />
+        android:hint="@string/unit_odometer"
+        android:inputType="numberDecimal"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="textEnd" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Fuel Grade"
+        android:text="@string/head_grade"
         android:id="@+id/head_grade"
         android:textStyle="bold"
         android:typeface="sans"
         android:layout_below="@+id/head_odometer"
         android:layout_marginTop="30dp"
-        android:layout_marginStart="15dp" />
+        android:layout_marginStart="20dp" />
 
     <EditText
         android:layout_width="200dp"
@@ -95,19 +104,22 @@
         android:layout_marginTop="10dp"
         android:layout_below="@+id/entry_odometer"
         android:layout_marginStart="150dp"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="textEnd" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Fuel Amount"
+        android:text="@string/head_amount"
         android:id="@+id/head_amount"
         android:textStyle="bold"
         android:typeface="sans"
         android:layout_below="@+id/head_grade"
         android:layout_marginTop="30dp"
-        android:layout_marginStart="15dp" />
+        android:layout_marginStart="20dp" />
 
     <EditText
         android:layout_width="200dp"
@@ -117,20 +129,23 @@
         android:layout_marginTop="10dp"
         android:layout_below="@+id/entry_grade"
         android:layout_marginStart="150dp"
-        android:hint="L"
-        android:inputType="numberDecimal" />
+        android:hint="@string/unit_amount"
+        android:inputType="numberDecimal"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="textEnd" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Fuel Unit Cost"
+        android:text="@string/head_unit"
         android:id="@+id/head_unit"
         android:textStyle="bold"
         android:typeface="sans"
         android:layout_below="@+id/head_amount"
         android:layout_marginTop="30dp"
-        android:layout_marginStart="15dp" />
+        android:layout_marginStart="20dp" />
 
     <EditText
         android:layout_width="200dp"
@@ -140,20 +155,23 @@
         android:layout_marginTop="10dp"
         android:layout_below="@+id/entry_amount"
         android:layout_marginStart="150dp"
-        android:hint="cents/L"
-        android:inputType="numberDecimal"/>
+        android:hint="@string/unit_unit"
+        android:inputType="numberDecimal"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="textEnd" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Fuel Cost"
+        android:text="@string/head_cost"
         android:id="@+id/head_cost"
         android:textStyle="bold"
         android:typeface="sans"
         android:layout_below="@+id/head_unit"
         android:layout_marginTop="30dp"
-        android:layout_marginStart="15dp" />
+        android:layout_marginStart="20dp" />
 
     <EditText
         android:layout_width="200dp"
@@ -164,6 +182,18 @@
         android:layout_below="@+id/entry_unit"
         android:layout_marginStart="150dp"
         android:editable="false"
-        android:inputType="numberDecimal"/>
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="textEnd" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_add_entry"
+        android:id="@+id/button_add_entry"
+        android:layout_marginBottom="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"/>
 
 </RelativeLayout>
