@@ -8,7 +8,8 @@
     <string name="head_amount">Fuel Amount</string>
     <string name="head_unit">Fuel Unit Cost</string>
     <string name="head_cost">Fuel Cost</string>
-    <string name="button_add_entry">Add Entry</string>
+    <string name="button_save_entry">Save Entry</string>
+    <string name="button_new_entry">New Entry</string>
     <string name="unit_unit">cents/L</string>
     <string name="unit_odometer">Km</string>
     <string name="unit_amount">L</string>

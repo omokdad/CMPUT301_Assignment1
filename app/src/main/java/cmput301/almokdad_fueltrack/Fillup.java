@@ -3,13 +3,13 @@ package cmput301.almokdad_fueltrack;
 public class Fillup {
     protected String date;
     protected String station;
-    protected float odometer;
+    protected String odometer;
     protected String grade;
-    protected float amount;
-    protected float unit;
+    protected String amount;
+    protected String unit;
     protected float cost;
 
-    public Fillup(String date, String station, float odometer, String grade, float unit, float amount, float cost) {
+    public Fillup(String date, String station, String odometer, String grade, String amount, String unit, float cost) {
         this.date = date;
         this.station = station;
         this.odometer = odometer;
@@ -35,11 +35,11 @@ public class Fillup {
         this.station = station;
     }
 
-    public float getOdometer() {
+    public String getOdometer() {
         return odometer;
     }
 
-    public void setOdometer(float odometer) {
+    public void setOdometer(String odometer) {
         this.odometer = odometer;
     }
 
@@ -51,19 +51,19 @@ public class Fillup {
         this.grade = grade;
     }
 
-    public float getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 
-    public float getUnit() {
+    public String getUnit() {
         return unit;
     }
 
-    public void setUnit(float unit) {
+    public void setUnit(String unit) {
         this.unit = unit;
     }
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="cmput301.almokdad_fueltrack.new_log"
+    tools:context="cmput301.almokdad_fueltrack.NewEntryActivity"
     android:orientation="vertical">
 
     <TextView
@@ -159,37 +159,11 @@
         android:layout_alignParentEnd="true"
         android:textAlignment="center" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/head_cost"
-        android:id="@+id/head_cost"
-        android:textStyle="bold"
-        android:typeface="sans"
-        android:layout_below="@+id/head_unit"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="20dp" />
-
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/entry_cost"
-        android:typeface="sans"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/entry_unit"
-        android:layout_marginStart="150dp"
-        android:editable="false"
-        android:layout_marginEnd="20dp"
-        android:layout_alignParentEnd="true"
-        android:textAlignment="center"
-        android:hint="$" />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_add_entry"
-        android:id="@+id/button_add_entry"
+        android:text="@string/button_save_entry"
+        android:id="@+id/button_save_entry"
         android:layout_marginBottom="100px"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="100dp"
