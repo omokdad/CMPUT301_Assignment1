@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -27,6 +26,12 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+// The first and main activity in the app
+// It shows the log of all the inputted entries
+// It also provides a method for the entry of new entries or editing old ones
+// It also computes and shows the running total of money spent on gas.
+
+
 
 public class LogListActivity extends Activity {
 
@@ -36,6 +41,7 @@ public class LogListActivity extends Activity {
 
     private ArrayAdapter<Fillup> adapter;
     private float totalCost;
+    private FillupLog log = new FillupLog();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,9 +53,12 @@ public class LogListActivity extends Activity {
         total = (TextView) findViewById(R.id.total);
 
         loglist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
+
+                //setup of edit menu to show on long-click of entries.
                 PopupMenu popup = new PopupMenu(getApplicationContext(), view);
                 Menu edit_menu = popup.getMenu();
                 MenuInflater inflater = popup.getMenuInflater();
@@ -62,6 +71,7 @@ public class LogListActivity extends Activity {
                         Intent intent = new Intent(LogListActivity.this, EditEntryActivity.class);
 
                         // learned from https://stackoverflow.com/questions/2405120/how-to-start-an-intent-by-passing-some-parameters-to-it on 31/01/2016
+                        // it is a way to send parameters through activities in order to know which entry to edit.
                         intent.putExtra("entry_pos",position);
 
                         startActivity(intent);
@@ -75,6 +85,7 @@ public class LogListActivity extends Activity {
             }
         });
 
+        // setup for add new  entry button.
         new_entry_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +100,7 @@ public class LogListActivity extends Activity {
 
     }
 
+    // setup to read the savefile and load the data onto the listlayout at every start of the activity
     @Override
     protected void onStart() {
         super.onStart();
@@ -97,6 +109,8 @@ public class LogListActivity extends Activity {
         loglist.setAdapter(adapter);
     }
 
+    // code to read from json file mostly from in-lab lonelyTwitter app
+    // this also calculates the running total of money spent
     private void loadFromFile() {
         try {
             FileInputStream fis = openFileInput(FILENAME);
@@ -105,26 +119,28 @@ public class LogListActivity extends Activity {
 
             // Took from https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/Gson.html 01-29 2016
             Type listType = new TypeToken<ArrayList<Fillup>>() {}.getType();
-            FillupLog.fillups = gson.fromJson(in, listType);
+            log.setFillups ( (ArrayList<Fillup>) gson.fromJson(in, listType));
 
             totalCost = 0;
 
-            for (Fillup item : FillupLog.fillups){
+            for (Fillup item : log.getFillups()){
                 totalCost = totalCost + item.getCost();
             }
 
             total.setText(String.format("$ %.2f", totalCost));
 
         } catch (FileNotFoundException e) {
-           FillupLog.fillups = new ArrayList<Fillup>();
+           log = new FillupLog();
         } catch (IOException e) {
             throw new RuntimeException();
         }
     }
 
-    public class LogListAdapter extends ArrayAdapter<Fillup> {
+    // this private sub-class takes the layout from listview_item.xml
+    // and uses it to provide the structure of the display of the arrayList onto the listviewer in the Activity.
+    private class LogListAdapter extends ArrayAdapter<Fillup> {
         public LogListAdapter(){
-            super(LogListActivity.this, R.layout.listview_item, FillupLog.fillups);
+            super(LogListActivity.this, R.layout.listview_item, log.getFillups());
         }
 
         @Override
@@ -132,7 +148,7 @@ public class LogListActivity extends Activity {
             if (view == null)
                 view = getLayoutInflater().inflate(R.layout.listview_item, parent, false);
 
-            Fillup currentFillup = FillupLog.fillups.get(position);
+            Fillup currentFillup = log.getFillup(position);
 
             TextView loc_Date = (TextView) view.findViewById(R.id.loc_date);
             loc_Date.setText(currentFillup.getDate());

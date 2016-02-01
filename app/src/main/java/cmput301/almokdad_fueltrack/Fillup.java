@@ -1,5 +1,7 @@
 package cmput301.almokdad_fueltrack;
 
+//Class to create objects to represent each entry, these objects are called "Fillup", and contain information entered and calculated about the entry.
+
 public class Fillup {
     protected String date;
     protected String station;
@@ -23,55 +25,27 @@ public class Fillup {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public String getStation() {
         return station;
-    }
-
-    public void setStation(String station) {
-        this.station = station;
     }
 
     public String getOdometer() {
         return odometer;
     }
 
-    public void setOdometer(String odometer) {
-        this.odometer = odometer;
-    }
-
     public String getGrade() {
         return grade;
-    }
-
-    public void setGrade(String grade) {
-        this.grade = grade;
     }
 
     public String getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
-        this.amount = amount;
-    }
-
     public String getUnit() {
         return unit;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
     public float getCost() {
         return cost;
-    }
-
-    public void setCost(float cost) {
-        this.cost = cost;
     }
 }

@@ -2,6 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/button_edit_entry"
-        android:title="Edit Entry"
+        android:title="@string/menu_edit_entry"
         />
 </menu>

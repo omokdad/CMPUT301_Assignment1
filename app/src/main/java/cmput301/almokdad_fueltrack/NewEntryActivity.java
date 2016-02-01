@@ -18,9 +18,11 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.Calendar;
 
-/**
- * Created by Master on 1/31/2016.
- */
+// The new-entry activity in the app
+// It provides the space and prompts for inputted entries
+// It also saves them onto the array-list (FillupLog) and th json file
+// It also computes the money spent on gas per fillup.
+
 public class NewEntryActivity extends Activity {
 
     private static final String FILENAME = "log.json";
@@ -31,6 +33,7 @@ public class NewEntryActivity extends Activity {
     private EditText entry_grade;
     private EditText entry_amount;
     private EditText entry_unit;
+    private FillupLog log = new FillupLog();
 
     private int myYear, myMonth, myDay;
     private final int dialog_id = 0;
@@ -49,6 +52,7 @@ public class NewEntryActivity extends Activity {
         entry_unit = (EditText) findViewById(R.id.entry_unit);
         Button save_entry = (Button) findViewById(R.id.button_save_entry);
 
+        // for the datepicker dialog
         showDialogOnClick();
 
 
@@ -72,7 +76,7 @@ public class NewEntryActivity extends Activity {
 
                 Fillup latestFillup = new Fillup(new_date, new_station, new_odometer_s, new_grade, new_amount_s, new_unit_s, new_cost);
 
-                FillupLog.fillups.add(latestFillup);
+                log.addFillup(latestFillup);
                 saveInFile();
                 finish();
             }
@@ -80,7 +84,9 @@ public class NewEntryActivity extends Activity {
 
     }
 
-
+    // showDialogOnClick, onCreateDialog, and onDateSetListner are functions heavily inspired by
+    // https://stackoverflow.com/questions/18267091/open-a-datepickerdialog-on-click-of-edittext-takes-two-clicks
+    // it provides the datepicker for choosing the date easier, as well as defaulting to the current date
     public void showDialogOnClick(){
 
         final Calendar cal = Calendar.getInstance();
@@ -106,7 +112,7 @@ public class NewEntryActivity extends Activity {
     @Override
     protected Dialog onCreateDialog(int id){
         if (id == dialog_id)
-            return new DatePickerDialog(this, dplistner, myYear, myMonth, myDay);
+            return new DatePickerDialog(this, dplistner, myYear, myMonth-1, myDay);
         return null;
     }
 
@@ -126,12 +132,15 @@ public class NewEntryActivity extends Activity {
         }
     };
 
+
+    // Saves the current arraylist after the new addition into the json file
+    // Mostly from in-lab lonelyTwitter app
     private void saveInFile() {
         try {
             FileOutputStream fos = openFileOutput(FILENAME, 0);
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
             Gson gson = new Gson();
-            gson.toJson(FillupLog.fillups, out);
+            gson.toJson(log.getFillups(), out);
             out.flush();
             fos.close();
         } catch (FileNotFoundException e) {
